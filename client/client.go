@@ -26,6 +26,7 @@ package main
 
 import (
 	"io"
+	"log"
 	"net"
 	"os"
 	"sync"
@@ -47,7 +48,7 @@ func main() {
 
 	conn, err := net.Dial("unix", "/tmp/test.sock")
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	var wg sync.WaitGroup
