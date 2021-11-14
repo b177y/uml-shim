@@ -10,4 +10,7 @@ require (
 require (
 	github.com/docker/docker v20.10.10+incompatible // indirect
 	github.com/erikdubbelboer/gspt v0.0.0-20210805194459-ce36a5128377 // indirect
+	github.com/inconshreveable/mousetrap v1.0.0 // indirect
+	github.com/spf13/cobra v1.2.1 // indirect
+	github.com/spf13/pflag v1.0.5 // indirect
 )

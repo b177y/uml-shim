@@ -25,6 +25,7 @@
 package main
 
 import (
+	"fmt"
 	"io"
 	"log"
 	"net"
@@ -65,6 +66,7 @@ func main() {
 	}()
 
 	wg.Wait()
+	fmt.Printf("\n\nClient disconnected")
 }
 
 func tcget(fd uintptr) (*unix.Termios, error) {

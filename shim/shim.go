@@ -45,10 +45,11 @@ func (b *Broadcaster) AddClient(newChan chan []byte) {
 	b.clients = append(b.clients, newChan)
 }
 
-func runShim() {
+func runShim(kern string, args []string) {
 	// cmd := exec.Command("python", "-c", "import pty; pty.spawn(\"/bin/bash\")")
 	// cmd := exec.Command(cmdline[0], cmdline[1:]...)
-	cmd := exec.Command("/home/billy/netkit-jh/kernel/netkit-kernel", "name=testmachine3", "title=testmachine3", "umid=testmachine3", "mem=132M", "ubd0=/home/billy/.local/share/netkit/uml/overlay/GLOBAL/testmachine3.disk,/home/billy/netkit-jh/fs/netkit-fs", "root=98:0", "uml_dir=/run/user/1000/netkit/uml/GLOBAL", "ssl0=fd:3,fd:1", "con1=null", "SELINUX_INIT=0")
+	// cmd := exec.Command("/home/billy/netkit-jh/kernel/netkit-kernel", "name=testmachine3", "title=testmachine3", "umid=testmachine3", "mem=132M", "ubd0=/home/billy/.local/share/netkit/uml/overlay/GLOBAL/testmachine3.disk,/home/billy/netkit-jh/fs/netkit-fs", "root=98:0", "uml_dir=/run/user/1000/netkit/uml/GLOBAL", "hosthome=/home/billy", "ssl0=fd:3,fd:1", "con1=null", "SELINUX_INIT=0")
+	cmd := exec.Command(kern, args...)
 	ptmx, err := pty.Start(cmd)
 	if err != nil {
 		log.Fatal(err)
